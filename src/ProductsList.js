@@ -76,9 +76,9 @@ export default class ProductsList extends Component {
 
     return (
       <div className="header">
-        <a onClick={this.reverseSortProducts}>
+        <button className="ui icon basic button" onClick={this.reverseSortProducts}>
           <i className="large sort icon" />
-        </a>
+        </button>
         <div className='ui unstackable items'>
           {productComponents}
         </div>
