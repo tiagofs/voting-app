@@ -2,7 +2,11 @@ import React, { Component } from "react";
 export default class Product extends Component {
 
   handleUpVote = () => {
-    this.props.onVote(this.props.id)
+    this.props.onUpVote(this.props.id)
+  }
+
+  handleDownVote = () => {
+    this.props.onDownVote(this.props.id)
   }
 
   render() {
@@ -25,6 +29,9 @@ export default class Product extends Component {
           <div className="header">
             <a onClick={this.handleUpVote}>
               <i className="large caret up icon" />
+            </a>
+            <a onClick={this.handleDownVote}>
+              <i className="large caret down icon" />
             </a>
             {votes}
           </div>
