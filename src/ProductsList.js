@@ -3,6 +3,11 @@ import { products } from './data';
 import Product from './Product'
 
 export default class ProductsList extends Component {
+  
+  handleProductUpVote = (productId) => {
+    console.log(productId + ' was upvoted');
+  }
+  
   render() {
     // We can have a JavaScript array of JSX elements.
     const sortedProducts = products.sort((a,b) => (b.votes - a.votes));
@@ -16,8 +21,10 @@ export default class ProductsList extends Component {
         votes={product.votes}
         submitterAvatarUrl={product.submitterAvatarUrl}
         productImageUrl={product.productImageUrl}
+        onVote={this.handleProductUpVote}
       />
     });
+    
     return (
       <div className='ui unstackable items'>
         {productComponents}
