@@ -1,19 +1,35 @@
 import React, { Component } from "react";
 export default class Product extends Component {
   render() {
+    const {
+      id,
+      title,
+      description,
+      url,
+      votes,
+      submitterAvatarUrl,
+      productImageUrl
+    } = this.props;
+
     return (
       <div className="item">
         <div className="image">
-          <img src="images/products/image-aqua.png" />
+          <img src={productImageUrl} />
         </div>
         <div className="middle aligned content">
-          <div className="description">
-            <a>Fort Knight </a>
-            <p> Authentic renaissance actors, delivered in just two weeks. </p>
+          <div className="header">
+            <a>
+              <i className="large caret up icon" />
+            </a>
+            {votes}
           </div>
-          <div className='extra'>
-            <span>Submitted by: </span>
-            <img className='ui avatar image' src="images/avatars/daniel.jpg"></img>
+          <div className="description">
+            <a href={url}>{title}</a>
+            <p>{description}</p>
+          </div>
+          <div className="extra">
+            <span>Submitted by:</span>
+            <img className="ui avatar image" src={submitterAvatarUrl} />
           </div>
         </div>
       </div>
