@@ -18,26 +18,11 @@ export default class ProductsList extends Component {
     this.setState({ products: sortedProducts })
   }
 
-  handleProductUpVote = (productId) => {
+  handleProductVote = (productId, vote) => {
     const nextProducts = this.state.products.map((product) => {
       if (product.id === productId) {
         return Object.assign({}, product, {
-          votes: product.votes + 1,
-        });
-      } else {
-        return product;
-      }
-    });
-    this.setState({
-      products: nextProducts,
-    });
-  }
-
-  handleProductDownVote = (productId) => {
-    const nextProducts = this.state.products.map((product) => {
-      if (product.id === productId) {
-        return Object.assign({}, product, {
-          votes: product.votes - 1,
+          votes: product.votes + vote,
         });
       } else {
         return product;
@@ -49,9 +34,7 @@ export default class ProductsList extends Component {
   }
 
   reverseSortProducts = () => {
-    const reverseSortedProducts = this.state.products.reverse();
     this.setState({
-      products: reverseSortedProducts,
       sortDesc: !this.state.sortDesc
     });    
   }
@@ -69,8 +52,7 @@ export default class ProductsList extends Component {
         votes={product.votes}
         submitterAvatarUrl={product.submitterAvatarUrl}
         productImageUrl={product.productImageUrl}
-        onUpVote={this.handleProductUpVote}
-        onDownVote={this.handleProductDownVote}
+        onVote={this.handleProductVote}
       />
     });
 
